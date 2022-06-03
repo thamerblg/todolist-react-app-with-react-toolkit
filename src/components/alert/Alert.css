@@ -1,0 +1,41 @@
+.alert {
+  margin-bottom: 0;
+  height: 1.25rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 0.7rem;
+  border-radius: 0.25rem;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+}
+/*for delete task*/
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+  border-color: #f5c6cb;
+}
+/*for add task*/
+.alert-success {
+  color: #155724;
+  background: #d4edda;
+  border-color: #c3e6cb;
+}
+/*for set to edit task*/
+.alert-dark {
+  color: #1b1e21;
+  background-color: #d6d8d9;
+  border-color: #c6c8ca;
+}
+/*for edit task*/
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+/*for delete all tasks*/
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}

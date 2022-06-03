@@ -1,57 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import AddTask from "./components/addTask/AddTask";
+import Alert from "./components/alert/Alert";
+import Filter from "./components/filter/Filter";
+import ListTask from "./components/ListTask";
+import {
+  deleteAllTasks,
+  hideAlert,
+  showAlert,
+} from "./features/task/taskSlice";
 
 function App() {
+  const taskList = useSelector((state) => state.tasks.listOfTask);
+  const alertBlock = useSelector((state) => state.tasks.alertBlock);
+
+  const dispatch = useDispatch();
+
+  const date = new Date();
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+  }, []);
+
+  const handelClearAll = (e) => {
+    e.preventDefault();
+    dispatch(deleteAllTasks());
+    dispatch(showAlert({ type: "warning", msg: "All tasks has been deleted" }));
+    setTimeout(() => {
+      dispatch(hideAlert());
+    }, 3000);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <>
+      <h1 className="title">Todo-list app</h1>
+      <main>
+        <div id="wrapper">
+          <header>
+            <h2 className="date">
+              <Moment format="dddd DD MMM YYYY">{date}</Moment>
+            </h2>
+            <p className="time">{time}</p>
+            <p className="task-count">
+              You have {taskList.length}{" "}
+              {taskList.length > 1 ? "tasks" : "task"} to do today
+            </p>
+            <AddTask />
+            {alertBlock.show && (
+              <Alert type={alertBlock.type} msg={alertBlock.msg} />
+            )}
+          </header>
+          <ListTask />
+          {taskList.length > 0 && (
+            <button className="clear-all" onClick={(e) => handelClearAll(e)}>
+              Clear all tasks
+            </button>
+          )}
+          {taskList.length > 0 && <Filter />}
+        </div>
+      </main>
+    </>
   );
 }
 

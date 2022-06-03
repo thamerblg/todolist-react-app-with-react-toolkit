@@ -1,0 +1,21 @@
+#input {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr auto;
+  margin: 20px 0 10px 0;
+}
+#input .form-control {
+  width: 100%;
+}
+#input .submit-btn {
+  padding: 5px 15px;
+  background: #212121b0;
+  border: 2px solid #212121b0;
+  color: #ffffff;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+#input .submit-btn:hover {
+  color: #212121b0;
+  background: #fff;
+}

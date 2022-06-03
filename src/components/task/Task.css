@@ -1,0 +1,69 @@
+.cards {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #bbbdc750;
+}
+.cards-info {
+  overflow-x: hidden;
+}
+.cards-info .task {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cards.resolved {
+  background: #b7ddf33d;
+}
+.cards.resolved .cards-info {
+  opacity: 0.5;
+}
+.cards.resolved .cards-info .task {
+  text-decoration: line-through;
+}
+.cards .resolved-btn {
+  padding: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #bbbdc7;
+  color: #00000000;
+  cursor: pointer;
+}
+.cards .resolved-btn.active {
+  background: #6ebb95;
+  color: #ffffff;
+  border-color: #5ea180;
+}
+.cards .delete-btn {
+  visibility: hidden;
+  padding: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #e75978;
+  color: #e75978;
+  cursor: pointer;
+}
+.cards .edit-btn {
+  visibility: hidden;
+  padding: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #6be675;
+  color: #6be675;
+  cursor: pointer;
+}
+.cards:hover {
+  background: #c4e9ff23;
+}
+.cards:hover .delete-btn,
+.cards:hover .edit-btn {
+  visibility: visible;
+}
+.time-ago {
+  font-size: 0.75rem;
+}

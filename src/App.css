@@ -1,39 +1,50 @@
-.App {
+.title {
   text-align: center;
+  margin-bottom: 25px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input,
+textarea,
+button {
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.95rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
+main {
   display: flex;
-  flex-direction: column;
+  width: 500px;
+  max-height: 80%;
+  padding: 0 20px;
+}
+#wrapper {
+  width: 100%;
+  position: relative;
+  display: grid;
+  background: #ffffffd0;
+  box-shadow: 0 10px 80px #0000003d;
+  border-radius: 1rem;
+  overflow-y: hidden;
+}
+header {
+  padding: 20px 20px 10px 20px;
+  border-bottom: 1px solid #21212150;
+}
+.time {
+  margin-bottom: 15px;
+}
+
+.cards .cards-info .time {
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+.task-count {
+  margin-bottom: 25px;
+}
+
+.clear-all {
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  color: #e66b6b !important;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin: 0.75rem auto;
 }
